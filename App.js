@@ -8,21 +8,19 @@ import { ScreenStack } from 'react-native-screens';// nodig voor stack navigatio
 const Stack = createNativeStackNavigator(); // nodig voor stack navigation
 
 import HomeScreen from './screens/homeScreen';
-import DetailsScreen from './screens/detailsScreen';
+import DetailsScreen from './screens/detailScreen';
 import AboutScreen from './screens/aboutScreen';
 
 
 export default function App() {
   return (
-    //ADDED
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Welcome" component={HomeScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
         <Stack.Screen name="About" component={AboutScreen} />
       </Stack.Navigator>
     </NavigationContainer>
-    //TILL HERE
   );
 }
 
