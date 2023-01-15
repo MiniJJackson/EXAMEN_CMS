@@ -9,7 +9,7 @@ const Stack = createNativeStackNavigator(); // nodig voor stack navigation
 
 import HomeScreen from './screens/homeScreen';
 import DetailsScreen from './screens/detailScreen';
-import AboutScreen from './screens/aboutScreen';
+import FoodScreen from './screens/foodScreen';
 
 
 export default function App() {
@@ -17,8 +17,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Welcome" component={HomeScreen} />
+        <Stack.Screen name="Food" component={FoodScreen} />
         <Stack.Screen name="Details" component={DetailsScreen} />
-        <Stack.Screen name="About" component={AboutScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

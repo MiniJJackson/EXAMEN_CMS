@@ -1,14 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React, {useState, useEffect} from 'react';
-import {Stylesheet, Text, View, Image, TextInput, Pressable, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Pressable, FlatList} from 'react-native';
 
 
-const detailFood = ({naviation}) =>{
+const DetailFood = ({naviation}) =>{ 
 
 
     return (
         <View>
-            <FlatList data={detailFood} renderItem={({item}) => (
+            <FlatList data={DetailFood} renderItem={({item}) => (
             <Text>
                 <Text>{item.title.rendered}</Text>
             </Text>    
@@ -21,6 +21,11 @@ const detailFood = ({naviation}) =>{
         </View>
     )
 }
-
-export default detailFood;
+const styles = StyleSheet.create({
+    screen: {
+      flex: 1,
+      justifyContent: 'center',
+    }
+  });
+export default DetailFood;
 
