@@ -1,29 +1,41 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-
+import React, {useState, useEffect} from 'react';
+import {Stylesheet, Text, View, Image, TextInput, Pressable, FlatList} from 'react-native';
 
 const AboutScreen = ({ navigation }) => {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text> ABOUT ME SCREEN</Text>
+    const [foodFav, setFoodFav] = useState ([]);
 
-          <Text> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum gravida eu ante eget vehicula. Sed.</Text>
-          <Button title="got to top screen in stack" onPress={() => navigation.popToTop()} />
-          <Button title="got to Details" onPress={() => navigation.navigate("Details")} />
-        </View>
+    const getFoodFav = async () => {
+        try {
+            const response = await fetch ("http://jennajackson.be/wp-json/wp/v2/posts?categories/", {
+
+            })
+            const json = await response.json();
+            setFoodFav(json);
+            console.log(foodFav);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        setFoodFav();
+    }, []);
+
+    return (
+      <View>
+      <FlatList data={foodFav} renderItem={({item}) => (
+      <Text>
+          <Text>{item.title.rendered}</Text>
+      </Text>    
+)}/>
+      <View>
+          <Pressable>
+          <Text>Bekijk product: {item.title.rendered}</Text>
+          </Pressable>
+      </View>
+  </View>
       );
 }
-
-
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-});
-
 
 export default AboutScreen;
 

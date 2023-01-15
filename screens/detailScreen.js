@@ -1,36 +1,26 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import React, {useState, useEffect} from 'react';
+import {Stylesheet, Text, View, Image, TextInput, Pressable, FlatList} from 'react-native';
 
 
-const DetailsScreen = ({ navigation }) => {
+const detailFood = ({naviation}) =>{
+
+
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-
-            <Text> DETAILS SCREEN</Text>
-            <Button style={{ backgroundColor: "green" }} title="got to Home" onPress={() => navigation.navigate("Home")}// gaat naar home
-            />
-            <Button title="got to About me" onPress={() => navigation.navigate("About")} // gaat naar about
-            />
-
-            <Button title="got to Details again..." onPress={() => navigation.navigate("Details")}// we staan al op dit scherm er gebeurt niks 
-            />
-            <Button title="got to Details again and again..." onPress={() => navigation.push("Details")}// we herladen de pagina nog eens met een animaties 
-            />
-            <Button title="Go Back" onPress={() => navigation.goBack()}// terug naar je vorige scherm dat is opgeslagen
-            />
+        <View>
+            <FlatList data={detailFood} renderItem={({item}) => (
+            <Text>
+                <Text>{item.title.rendered}</Text>
+            </Text>    
+    )}/>
+            <View>
+                <Pressable>
+                <Text>Bekijk mijn Recepten {item.title.rendered}</Text>
+                </Pressable>
+            </View>
         </View>
-    );
+    )
 }
 
+export default detailFood;
 
-
-const styles = StyleSheet.create({
-    screen: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    }
-});
-
-
-export default DetailsScreen;
